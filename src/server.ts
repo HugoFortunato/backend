@@ -6,6 +6,8 @@ import {
 } from 'fastify-type-provider-zod';
 import { confirmTrip } from './routes/confirm';
 import cors from '@fastify/cors';
+import { deleteTrip } from './routes/delete-trip';
+import { getTrips } from './routes/get-trips';
 
 const app = fastify();
 
@@ -18,6 +20,8 @@ app.setSerializerCompiler(serializerCompiler);
 
 app.register(createTrip);
 app.register(confirmTrip);
+app.register(deleteTrip);
+app.register(getTrips);
 
 app.listen({ port: 3333 }).then(() => {
   console.log('HTTP server running on http://localhost:3333');
